@@ -1,2 +1,2 @@
-# Maize
+# MAiZE
 Corn Maze
