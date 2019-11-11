@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    public GameObject flashlight;
     bool isGrounded;
     // Update is called once per frame
     void Update()
@@ -32,5 +33,10 @@ public class PlayerMovement : MonoBehaviour
         //Gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log("Pressed F");
+            flashlight.SetActive(!flashlight.activeSelf);
+        }
     }
 }
