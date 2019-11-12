@@ -12,15 +12,17 @@ public class CharacterControl_v2 : MonoBehaviour
 
     //Setting variables
     public float jumpHeight = 3f;
-    public float movementSpeed = 12f;
+    public float movementSpeed = 8f;
+    public float sprintMultiplier = 3f;
     public float lookSensitivity = 20f; //20 is ok for mouse, 300 for controller
 
     //Variables
+    private float movementMultiplier = 1f;
     private float gravity = -9.8f;
     private PlayerControls controls;
     private float xRotation = 0f;
     private Vector2 move, look;
-    private bool isGrounded;
+    private bool isGrounded, isSprinting;
     private Vector3 velocity;
 
         private void Awake()
@@ -39,8 +41,6 @@ public class CharacterControl_v2 : MonoBehaviour
         controls.Gameplay.Jump.performed += ctx => Jump();
         //Interact
         controls.Gameplay.Interact.performed += ctx => Interact();
-        //Sprint
-        controls.Gameplay.Sprint.performed += ctor => Sprint();
     }
     void Start()
     {
@@ -57,16 +57,22 @@ public class CharacterControl_v2 : MonoBehaviour
     private void Update()
     {
         //Gravity
-
+        velocity.y += gravity * Time.deltaTime;
         //Move character controller
         Vector3 m = transform.right * move.x + transform.forward * move.y;
-        controller.Move(m * movementSpeed * Time.deltaTime);
+        controller.Move(m * movementSpeed * movementMultiplier * Time.deltaTime);
         //Look around
-        Debug.Log(look);
         transform.Rotate(Vector3.up * look.x * lookSensitivity * Time.deltaTime);
         xRotation -= look.y * lookSensitivity * Time.deltaTime;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         playerHead.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        //Sprint
+        if (UnityEngine.Input.GetButtonDown("Sprint"))
+            movementMultiplier = sprintMultiplier;
+        if (UnityEngine.Input.GetButtonUp("Sprint"))
+            movementMultiplier = 1f;
+        //Update Velocity
+        controller.Move(velocity * Time.deltaTime);
     }
     void Flashlight()
     {
@@ -74,14 +80,9 @@ public class CharacterControl_v2 : MonoBehaviour
     }
     void Jump()
     {
-        Debug.Log(Mathf.Sqrt(jumpHeight * -2f * gravity));
         velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
     }
     void Interact()
-    {
-
-    }
-    void Sprint()
     {
 
     }
