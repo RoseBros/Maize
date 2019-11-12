@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterControl_v2 : MonoBehaviour
+public class CharacterControl_v3 : MonoBehaviour
 {
     //Unity Objects Need to link
     public GameObject flashlight;
-    //public CharacterController controller;
+    public CharacterController controller;
     public Transform playerHead;
 
     //Setting variables
@@ -17,14 +17,12 @@ public class CharacterControl_v2 : MonoBehaviour
     public float lookSensitivity = 20f; //20 is ok for mouse, 300 for controller
 
     //Variables
-    private Animator anim;
-    private CharacterController controller;
-    private PlayerControls controls;
     private float movementMultiplier = 1f;
     private float gravity = -9.8f;
+    private PlayerControls controls;
     private float xRotation = 0f;
     private Vector2 move, look;
-    private bool isGrounded;
+    private bool isGrounded, isSprinting;
     private Vector3 velocity;
 
         private void Awake()
@@ -47,8 +45,6 @@ public class CharacterControl_v2 : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        controller = GetComponent<CharacterController>();
-        anim = GetComponent<Animator>();
     }
     private void OnEnable()
     {
@@ -63,18 +59,12 @@ public class CharacterControl_v2 : MonoBehaviour
         //Gravity
         velocity.y += gravity * Time.deltaTime;
         //Move character controller
-        Walk();
         Vector3 m = transform.right * move.x + transform.forward * move.y;
         controller.Move(m * movementSpeed * movementMultiplier * Time.deltaTime);
-        //Character is grouned
-        if (controller.isGrounded)
-        {
-            anim.SetInteger("jumpState", 0);
-        }
         //Look around
         transform.Rotate(Vector3.up * look.x * lookSensitivity * Time.deltaTime);
         xRotation -= look.y * lookSensitivity * Time.deltaTime;
-        xRotation = Mathf.Clamp(xRotation, -45f, 25f);
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
         playerHead.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         //Sprint
         if (UnityEngine.Input.GetButtonDown("Sprint"))
@@ -88,25 +78,9 @@ public class CharacterControl_v2 : MonoBehaviour
     {
         flashlight.SetActive(!flashlight.activeSelf);
     }
-    void Walk()
-    {
-        switch (move.y)
-        {
-            case -1:
-                anim.SetInteger("isWalking", -1); break;
-            case 0:
-                anim.SetInteger("isWalking", 0); break;
-            case 1:
-                anim.SetInteger("isWalking", 1); break;
-        }
-    }
     void Jump()
     {
-        if (controller.isGrounded)
-        {
-            anim.SetInteger("jumpState", 1);
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
+        velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
     }
     void Interact()
     {
