@@ -107,7 +107,7 @@ namespace SNAP
                 if (exMaterial.name == "ProBuilder/Standard Vertex Color")
                     smoothness = exMaterial.GetFloat("_Glossiness");
                 else
-                    smoothness = exMaterial.GetFloat("_Smoothness");
+                    smoothness = exMaterial.GetFloat("_Glossiness");
 
                 float metallic = exMaterial.GetFloat("_Metallic");
 
