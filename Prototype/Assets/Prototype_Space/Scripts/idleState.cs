@@ -6,6 +6,7 @@ using UnityEngine;
 public class idleState : BaseState
 {
     private Player _player;
+    private Type nextState;
     public idleState(Player player) : base(player.gameObject)
     {
         _player = player;
@@ -14,6 +15,9 @@ public class idleState : BaseState
     {
         //Logic for next state
         //_player.SomeAction(); //Do things to the player
-        throw new NotImplementedException();
+        //set animation to idle
+        _player._controls.FarmBoy.Move.performed += ctx => nextState = typeof(moveState);
+        _player.HandleIdle();
+        return typeof(idleState);
     }
 }

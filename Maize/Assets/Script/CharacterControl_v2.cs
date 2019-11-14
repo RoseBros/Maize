@@ -19,6 +19,7 @@ public class CharacterControl_v2 : MonoBehaviour
     //Variables
     private Animator anim;
     private CharacterController controller;
+    
     private PlayerControls controls;
     private float movementMultiplier = 1f;
     private float gravity = -9.8f;
@@ -30,7 +31,7 @@ public class CharacterControl_v2 : MonoBehaviour
         private void Awake()
     {
         controls = new PlayerControls();
-        InputControlScheme scheme = controls.KeyboardMouseScheme;
+        //InputControlScheme scheme = controls.KeyboardMouseScheme;
         //Movement
         controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
