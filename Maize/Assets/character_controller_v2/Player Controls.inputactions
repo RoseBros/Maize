@@ -51,7 +51,7 @@
                     "id": "a288c2ae-071a-4b06-974f-f98eaca5f942",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "MultiTap"
                 }
             ],
             "bindings": [
