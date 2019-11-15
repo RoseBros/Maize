@@ -42,8 +42,8 @@ public class CharacterControl_v3 : MonoBehaviour
         //Interact
         controls.Gameplay.Interact.performed += ctx => HandleInteract();
         //Run
-        controls.Gameplay.Run.performed += ctx => Debug.Log("pressed");  HandleRun(true);
-        controls.Gameplay.Run.canceled += ctx => Debug.Log("released"); HandleRun(false);
+        controls.Gameplay.Run.performed += ctx => HandleRun(true);
+        controls.Gameplay.Run.canceled += ctx => HandleRun(false);
     }
     private void Start()
     {
