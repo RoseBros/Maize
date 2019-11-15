@@ -46,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Sprint",
+                    "name": "Run",
                     "type": "Button",
                     "id": "a288c2ae-071a-4b06-974f-f98eaca5f942",
                     "expectedControlType": "",
@@ -216,7 +216,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XboxController",
-                    "action": "Sprint",
+                    "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -227,7 +227,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Sprint",
+                    "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -74,7 +74,6 @@ public class CharacterControl_v2 : MonoBehaviour
         //Character jumps
         if (jumps)
         {
-            Debug.Log("jumps");
             anim.SetInteger("jumpState", 1); //start jump
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             //anim.SetInteger("jumpState", 2); //mid air

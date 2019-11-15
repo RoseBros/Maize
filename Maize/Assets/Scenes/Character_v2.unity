@@ -2766,8 +2766,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6764792004366232544}
   - component: {fileID: 6764792004358440056}
-  - component: {fileID: 6764792004365874691}
   - component: {fileID: 6764792004365874689}
+  - component: {fileID: 6764792004365874693}
   m_Layer: 0
   m_Name: Basic Motions Dummy
   m_TagString: Untagged
@@ -2810,18 +2810,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6764792004365874691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6764792004365874688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4296c9b2515e374486a4440c3ac2211, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6764792004365874692
 GameObject:
   m_ObjectHideFlags: 0
@@ -2838,6 +2826,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6764792004365874693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6764792004365874688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4296c9b2515e374486a4440c3ac2211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 1830261406}
+  flashlight: {fileID: 1989073086}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  lookSensitivity: 20
+  movementSpeed: 8
+  jumpHeight: 3
+  runMultiplier: 3
+  groundDistance: 0.4
 --- !u!1 &6764792004365874696
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ public class CharacterLook_v2 : MonoBehaviour
         //Interact
         controls.Gameplay.Interact.performed += ctx => Interact();
         //Sprint
-        controls.Gameplay.Sprint.performed += ctor => Sprint();
+        //controls.Gameplay.Sprint.performed += ctor => Sprint();
     }
     void Start()
     {
