@@ -36,11 +36,12 @@ public class MazeMeshGenerator
                 if (data[i, j] != 1)
                 {
                     // floor
+                    /*
                     AddQuad(Matrix4x4.TRS(
                         new Vector3(j * width, 0, i * width),
                         Quaternion.LookRotation(Vector3.up),
                         new Vector3(width, width, 1)
-                    ), ref newVertices, ref newUVs, ref floorTriangles);
+                    ), ref newVertices, ref newUVs, ref floorTriangles);*/
 
                     // ceiling
                     /*
